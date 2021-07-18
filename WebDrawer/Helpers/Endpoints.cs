@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebDrawer.Helpers
 {
-    public class Endpoints
+    public static class Endpoints
     {
-        public string pokemonUrl { get; set; } = "https://pokeapi.co/api/v2/pokemon/";
+        public static string PokemonUrl { get; set; } = "https://pokeapi.co/api/v2/pokemon/";
     }
 }
