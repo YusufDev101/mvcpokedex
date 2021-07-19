@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using WebDrawer.Data;
 using WebDrawer.Models;
 
 namespace WebDrawer.Controllers
@@ -13,13 +14,27 @@ namespace WebDrawer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        private PokemonData pokemonData;
+        private PokemonModel PokemonModel;
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+
+            // pokemonData
+            pokemonData = new PokemonData();
+            PokemonModel = new PokemonModel();
         }
 
         public IActionResult Index()
         {
+            // Get.
+            GetData();
+
+            // Set data.
+            ViewBag.PokemonObjectModel = PokemonModel;
+
+            // Return.
             return View();
         }
 
@@ -32,6 +47,18 @@ namespace WebDrawer.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private async void GetData()
+        {
+            try
+            {
+                PokemonModel = await pokemonData.PokemonModels();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

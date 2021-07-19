@@ -1,6 +1,12 @@
-﻿@{
+﻿@using WebDrawer.Models; 
+
+@{
+
     ViewData["Title"] = "Home Page";
+
+    PokemonModel pokemonModel = ViewBag.PokemonObjectModel;
 }
+
 
 <div class="text-center">
     @*<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -44,12 +50,11 @@
         </div>
     </div>
 
-
     <div class="container">
         <div class="row">
             <div class="col-sm">
                 <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
-                    <img class="card-img-top" src="https://picsum.photos/700/400?random=1" alt="Card image cap">
+                    <img class="card-img-top" src=@pokemonModel.sprites.front_default alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
