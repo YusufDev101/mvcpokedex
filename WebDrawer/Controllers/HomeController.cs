@@ -16,6 +16,7 @@ namespace WebDrawer.Controllers
 
         private PokemonData pokemonData;
         private PokemonModel PokemonModel;
+        private List<PokemonModel> PokemonModels;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -24,6 +25,7 @@ namespace WebDrawer.Controllers
             // pokemonData
             pokemonData = new PokemonData();
             PokemonModel = new PokemonModel();
+            PokemonModels = new List<PokemonModel>();
         }
 
         public IActionResult Index()
@@ -32,7 +34,7 @@ namespace WebDrawer.Controllers
             GetData();
 
             // Set data.
-            ViewBag.PokemonObjectModel = PokemonModel;
+            ViewBag.PokemonObjectModel = PokemonModels;
 
             // Return.
             return View();
@@ -53,7 +55,12 @@ namespace WebDrawer.Controllers
         {
             try
             {
-                PokemonModel = pokemonData.PokemonModels().Result;
+                for (int i = 1; i < 25; i++)
+                {
+                    PokemonModel = pokemonData.PokemonModels(i.ToString()).Result;
+
+                    PokemonModels.Add(PokemonModel);
+                }
             }
             catch (Exception)
             {
