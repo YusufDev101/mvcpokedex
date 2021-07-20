@@ -16,14 +16,15 @@ namespace WebDrawer.Data
 
         }
 
-        public async Task<PokemonModel> PokemonModels()
+        public async Task<PokemonModel> PokemonModels(string number)
         {
-            var pokeObj = new List<PokemonModel>();
-
             try
             {
+
+                var url = Endpoints.PokemonUrl + number.ToString();
+
                 // Fill object.
-                var result = await Endpoints.PokemonUrl.GetStringAsync();
+                var result = await url.GetStringAsync();
                 var resultObj = JsonConvert.DeserializeObject<PokemonModel>(result);
 
                 return resultObj;

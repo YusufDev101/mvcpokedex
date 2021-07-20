@@ -7,6 +7,6 @@ namespace WebDrawer.Helpers
 {
     public static class Endpoints
     {
-        public static string PokemonUrl { get; set; } = "https://pokeapi.co/api/v2/pokemon/1";
+        public static string PokemonUrl { get; set; } = "https://pokeapi.co/api/v2/pokemon/";
     }
 }

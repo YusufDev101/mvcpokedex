@@ -3,8 +3,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using WebDrawer.Data;
 using WebDrawer.Models;
 
@@ -16,6 +14,7 @@ namespace WebDrawer.Controllers
 
         private PokemonData pokemonData;
         private PokemonModel PokemonModel;
+        private List<PokemonModel> PokemonModels;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -24,6 +23,7 @@ namespace WebDrawer.Controllers
             // pokemonData
             pokemonData = new PokemonData();
             PokemonModel = new PokemonModel();
+            PokemonModels = new List<PokemonModel>();
         }
 
         public IActionResult Index()
@@ -32,7 +32,7 @@ namespace WebDrawer.Controllers
             GetData();
 
             // Set data.
-            ViewBag.PokemonObjectModel = PokemonModel;
+            ViewBag.PokemonObjectModel = PokemonModels;
 
             // Return.
             return View();
@@ -49,11 +49,16 @@ namespace WebDrawer.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private async void GetData()
+        private void GetData()
         {
             try
             {
-                PokemonModel = await pokemonData.PokemonModels();
+                for (int i = 1; i < 25; i++)
+                {
+                    PokemonModel = pokemonData.PokemonModels(i.ToString()).Result;
+
+                    PokemonModels.Add(PokemonModel);
+                }
             }
             catch (Exception)
             {
