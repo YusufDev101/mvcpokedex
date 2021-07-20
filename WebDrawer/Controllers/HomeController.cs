@@ -49,11 +49,11 @@ namespace WebDrawer.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private async void GetData()
+        private void GetData()
         {
             try
             {
-                PokemonModel = await pokemonData.PokemonModels();
+                PokemonModel = pokemonData.PokemonModels().Result;
             }
             catch (Exception)
             {
