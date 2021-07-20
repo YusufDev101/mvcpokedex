@@ -9,44 +9,45 @@
     <link rel="stylesheet" href="~/css/home.css" />
 </head>
 
-<div class="container">
+<div class="container" style="margin-top: -40px">
     <div class="row">
 
         @foreach (var item in pokemonModel)
-        {
+         {
             var url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + item.id + ".png";
-
-            <div class="wrapper">
-                <div class="clash-card barbarian">
-                    <div class="clash-card__image clash-card__image--barbarian">
-                        <img src="@url" alt="barbarian" />
-                    </div>
-                   
-                    <div class="clash-card__unit-name">@item.name</div>
-                    @*<div class="clash-card__unit-description">
-                        The Barbarian is a kilt-clad Scottish warrior with an angry, battle-ready expression, hungry for destruction. He has Killer yellow horseshoe mustache.
-                    </div>*@
-
-                    <div class="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
-                        <div class="one-third">
-                            <div class="stat">20<sup>S</sup></div>
-                            <div class="stat-value">Training</div>
+            <div class="col-sm">
+                <div class="wrapper">
+                    <div class="clash-card barbarian">
+                        <div class="clash-card__image clash-card__image--barbarian">
+                            <img src="@url" alt="barbarian" />
                         </div>
 
-                        <div class="one-third">
-                            <div class="stat">16</div>
-                            <div class="stat-value">Speed</div>
-                        </div>
+                        <div class="clash-card__unit-name">@item.name</div>
+                        @*<div class="clash-card__unit-description">
+                                The Barbarian is a kilt-clad Scottish warrior with an angry, battle-ready expression, hungry for destruction. He has Killer yellow horseshoe mustache.
+                            </div>*@
 
-                        <div class="one-third no-border">
-                            <div class="stat">150</div>
-                            <div class="stat-value">Cost</div>
-                        </div>
+                        <div class="clash-card__unit-stats clash-card__unit-stats--barbarian clearfix">
+                            <div class="one-third">
+                                <div class="stat">20<sup>S</sup></div>
+                                <div class="stat-value">Training</div>
+                            </div>
 
+                            <div class="one-third">
+                                <div class="stat">16</div>
+                                <div class="stat-value">Speed</div>
+                            </div>
+
+                            <div class="one-third no-border">
+                                <div class="stat">150</div>
+                                <div class="stat-value">Cost</div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        }
+         }
 
-        </div>
+    </div>
 </div>
