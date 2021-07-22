@@ -38,6 +38,25 @@ namespace WebDrawer.Controllers
             return View();
         }
 
+        public IActionResult Index(string submitButton)
+        {
+
+            switch (submitButton)
+            {
+                case "Send":
+                    Console.WriteLine();
+                    break;
+                case "Cancel":
+                    break;
+                default:
+                    break;
+            }
+
+
+            // Return.
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
